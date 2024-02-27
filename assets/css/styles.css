@@ -374,7 +374,7 @@ nav {
 }
 
 .price__content img {
-  max-width: 70px;
+  max-width: 250px;
   margin-inline: auto;
   margin-bottom: 1rem;
 }
@@ -393,58 +393,6 @@ nav {
 
 .price__content hr {
   margin-bottom: 1rem;
-}
-
-.swiper {
-  margin-top: 2rem;
-  padding-bottom: 2rem;
-  width: 100%;
-}
-
-.swiper-slide {
-  max-width: 500px;
-  padding-inline: 1rem;
-  padding-top: 4rem;
-}
-
-.client__card {
-  position: relative;
-  padding-block: 4rem 2rem;
-  padding-inline: 2rem;
-  border-radius: 5px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.client__card img {
-  position: absolute;
-  top: 0;
-  left: 2rem;
-  transform: translateY(-50%);
-  max-width: 80px;
-  border-radius: 100%;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.client__ratings {
-  margin-bottom: 1rem;
-  color: goldenrod;
-}
-
-.client__card p {
-  margin-bottom: 1rem;
-  color: var(--text-light);
-}
-
-.client__card h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-dark);
-}
-
-.client__card h5 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-light);
 }
 
 .footer {
