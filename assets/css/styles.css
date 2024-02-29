@@ -86,7 +86,8 @@ body {
   background-color: var(--secondary-color);
 }
 
-nav { 
+nav {
+  position: sticky; 
   isolation: isolate;
   width: 100%;
   z-index: 999;
@@ -96,7 +97,7 @@ nav {
   padding: 1rem;
   width: 100%;
   top: 0;
-  /* position: sticky; */
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: space-between;
