@@ -36,6 +36,7 @@ class UserFactory extends Factory
             'date_of_birth' => fake()->date(),
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
+            'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
         ];
     }
 
