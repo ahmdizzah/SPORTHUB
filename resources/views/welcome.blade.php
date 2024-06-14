@@ -1,41 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="{{asset('assets\css\styles-user.css')}}" />
-  <title>SPORTHUB</title>
-</head>
-
-<body>
+@extends('layouts.template')
+@section('content')
   <header class="header">
-    <nav>
-      <div class="nav__header">
-        <div class="nav__logo">
-          <a>SPORTHUB</a>
-        </div>
-        <div class="nav__menu__btn" id="menu-btn">
-          <span><i class="ri-menu-line"></i></span>
-        </div>
-      </div>
-      <ul class="nav__links" id="nav-links">
-        <li class="link"><a href="#home">Dashboard</a></li>
-        <li class="link"><a href="#features">Features</a></li>
-        <li class="link"><a href="#plans">Plans</a></li>
-        @if(!Auth::check())
-        <li class="link"><a href="{{route('login')}}">Login</a></li>
-        @else
-        <span>
-          <li class="profile-link"><a id="profile-link" href=""><img src="{{asset('assets\images\profile.png')}}" alt="Profile Picture"></a></li>
-        </span>
-        <li class="link"><a href="{{route('logout')}}">Logout</a></li>
-        @endif
-        <li class="link"><button class="btn">Download</button></li>
-      </ul>
-    </nav>
     <div class="section__container header__container" id="home">
       <div class="header__image">
         <img src="{{asset('assets\images\full-shot-man-doing-yoga-mat-1-bg.png')}}" alt="header" />
@@ -178,10 +143,4 @@
       Copyright © 2023 Web Design Mastery. All rights reserved.
     </div>
   </footer>
-
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script src="{{asset('assets\js\script.js')}}"></script>
-</body>
-
-</html>
+@endsection

@@ -28,13 +28,14 @@ class UserFactory extends Factory
             'role' => fake()->randomElement(['admin', 'user']),
             'username' => fake()->unique()->userName(),
             'password' => static::$password ??= Hash::make('password'),
-            'name' => fake()->name(),
-            'tgl_lahir' => fake()->date(),
-            'berat_badan' => fake()->randomFloat(2, 30, 100),
-            'tinggi_badan' => fake()->randomFloat(2, 100, 200),
-            'image_path' => fake()->imageUrl(),
-            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
+            'fname' => fake()->firstName(),
+            'lname' => fake()->lastName(),
+            'weight' => fake()->numberBetween(50, 150),
+            'height' => fake()->numberBetween(150, 200),
+            'date_of_birth' => fake()->date(),
+            'address' => fake()->address(),
+            'phone' => fake()->phoneNumber(),
         ];
     }
 

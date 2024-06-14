@@ -32,15 +32,16 @@ class RegisteredUserController extends Controller
     {
         // logic to register
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'username' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6|max:12|regex:/[a-zA-Z0-9@!$%*#?&]/',
-            'confirm_password' => 'required|same:password',
+            'password' => 'required|min:6|max:12|regex:/[a-zA-Z0-9@!$%*#?&]/| confirmed',
+            'fname' => 'required',
+            'lname' => 'required',
         ]);
 
         if ($validator->fails()) {
             return redirect('register')
-            ->withErrors($validator)
+                ->withErrors($validator)
                 ->withInput();
         }
 
@@ -48,15 +49,15 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'role' => 'user',
             'username' => $request->username,
+            'fname' => $request->fname,
+            'lname' => $request->lname,
             'password' => bcrypt($request->password),
-            'name' => $request->name,
-            'tgl_lahir' => $request->tgl_lahir,
-            'berat_badan' => $request->berat_badan,
-            'tinggi_badan' => $request->tinggi_badan,
-            
         ]);
-        
+
         event(new Registered($user));
-        return redirect('login')->with('msg', 'Register success');
+
+        Auth::login($user);
+
+        return redirect(route('dashboard', absolute: false));
     }
 }

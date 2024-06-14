@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -22,13 +23,16 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'username',
-        'name',
         'role',
         'password',
-        'tgl_lahir',
-        'berat_badan',
-        'tinggi_badan',
-        'image_path',
+        'fname',
+        'lname',
+        'weight',
+        'height',
+        'date_of_birth',
+        'image',
+        'address',
+        'phone',
     ];
 
     /**
@@ -52,5 +56,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function plans(): HasMany
+    {
+        return $this->hasMany(Plan::class);
     }
 }

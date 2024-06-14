@@ -17,7 +17,10 @@ class ProgramFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'plan_id' => \App\Models\Plan::inRandomOrder()->first()->id,
+            'exercise_id' => \App\Models\Exercise::inRandomOrder()->first()->id,
+            'sets' => $this->faker->numberBetween(5, 12),
+            'reps' => $this->faker->numberBetween(2, 5),
         ];
     }
 }

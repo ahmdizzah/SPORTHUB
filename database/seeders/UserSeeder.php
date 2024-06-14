@@ -15,14 +15,12 @@ class UserSeeder extends Seeder
     {
         //membuat akun untuk admin
         User::create([
-            'name' => 'Admin',
-            'email' => 'admin2@admin.com',
+            'fname' => 'Admin',
+            'lname' => 'Admin',
+            'email' => 'admin@admin.com',
             'password' => bcrypt('admin123'),
             'role' => 'admin',
             'username' => 'Admin',
-            'tgl_lahir' => '2000-01-01',
-            'berat_badan' => '0',
-            'tinggi_badan' => '0',
         ]);
     }
 }
