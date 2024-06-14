@@ -7,9 +7,19 @@ use App\Models\User;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\PlanController;
+use App\Models\Plan;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
-    return view('welcome');
+    $topExercises = DB::table('programs')
+        ->join('exercises', 'programs.exercise_id', '=', 'exercises.id')
+        ->select('exercises.id', 'exercises.name', 'exercises.image', DB::raw('count(*) as count'))
+        ->groupBy('exercises.id', 'exercises.name', 'exercises.image')
+        ->orderBy('count', 'desc')
+        ->take(4)
+        ->get();
+    $plans = Plan::orderBy('created_at', 'desc')->take(3)->get();
+    return view('welcome', compact('topExercises', 'plans'));
 });
 
 Route::get('/login', function () {

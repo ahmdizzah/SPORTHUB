@@ -21,77 +21,46 @@
   <section class="section__container class__container" id="features">
     <h2 class="section__header">Pick our top lineup workout exercises</h2>
     <div class="class__grid">
-      <div class="class__card">
-        <img src="{{asset('assets\images\dot-bg.png')}}" alt="bg" class="class__bg" />
-        <img src="{{asset('assets\images\young-man-making-sport-exercises-home-1-bg.png')}}" alt="class" />
-        <div class="class__content">
-          <h4>Arm Program</h4>
-        </div>
-      </div>
-      <div class="class__card">
-        <img src="{{asset('assets\images\dot-bg.png')}}" alt="bg" class="class__bg" />
-        <img src="{{asset('assets\images\man-fitness-workout-shirtless-man-doing-stretching-home-1-bg.png')}}" alt="class" />
-        <div class="class__content">
-          <h4>Abs Program</h4>
-        </div>
-      </div>
-      <div class="class__card">
-        <img src="{{asset('assets\images\dot-bg.png')}}" alt="bg" class="class__bg" />
-        <img src="{{asset('assets\images\young-man-making-sport-exercises-home-2-1-bg.png')}}" alt="class" />
-        <div class="class__content">
-          <h4>Back Program</h4>
-        </div>
-      </div>
-      <div class="class__card">
-        <img src="{{asset('assets\images\dot-bg.png')}}" alt="bg" class="class__bg" />
-        <img src="{{asset('assets\images\young-serious-sports-man-warming-up-gym-1.png')}}" alt="class" />
-        <div class="class__content">
-          <h4>Full Body Program</h4>
-        </div>
-      </div>
+    @foreach ($topExercises as $exercise)
+        <a href="{{route('exercises.show', $exercise->id)}}">
+            <div class="class__card">
+                <img src="{{asset('assets/images/dot-bg.png')}}" alt="bg" class="class__bg" />
+                @if ($exercise->image)
+                    <img src="{{asset('assets/images/exercises/'.$exercise->image)}}" alt="class" />
+                @else
+                    <img src="{{asset('assets/images/young-man-making-sport-exercises-home-1-bg.png')}}" alt="class" />
+                @endif
+                <div class="class__content">
+                    <h4>{{$exercise->name}}</h4>
+                </div>
+            </div>
+        </a>
+    @endforeach
     </div>
   </section>
 
   <section class="section__container price__container" id="plans">
     <h2 class="section__header">Our Ideal Workout Plan</h2>
     <div class="price__grid">
+    @foreach ($plans as $plan)
       <div class="price__card">
         <div class="price__content">
-          <h4>1 Month Program</h4>
-          <img src="{{asset('assets\images\close-up-man-exercising-after-online-instructor-2.png')}}" alt="price" />
+          <h4>{{ $plan->duration }} Month Program</h4>
+          @if ($plan->image)
+            <img src="{{ asset('assets/images/plans/' . $plan->image) }}" alt="price" />
+          @else
+            <img src="{{ asset('assets/images/close-up-man-exercising-after-online-instructor-2.png') }}" alt="price" />
+          @endif
           <hr />
-          <h4>Key Features</h4>
-          <p>Smart workout plan</p>
-          <p>At home workouts</p>
+          <h4>{{$plan->name}}</h4>
+          <p>{{ $plan->description }}</p>
+          <p>by {{ $plan->user->username }}</p>
         </div>
-        <button class="btn">Start Your Program</button>
+        <a href="{{ route('plans.show', $plan->id) }}">
+          <button class="btn">Start Your Program</button>
+        </a>
       </div>
-      <div class="price__card">
-        <div class="price__content">
-          <h4>6 Months Program</h4>
-          <img src="{{asset('assets\images\close-up-man-exercising-after-online-instructor.png')}}" alt="price" />
-          <hr />
-          <h4>Key Features</h4>
-          <p>PRO Gyms</p>
-          <p>Smart workout plan</p>
-          <p>At home workouts</p>
-        </div>
-        <button class="btn">Start Your Program</button>
-      </div>
-      <div class="price__card">
-        <div class="price__content">
-          <h4>12 Months Program</h4>
-          <img src="{{asset('assets\images\close-up-man-exercising-after-online-instructor_23-2149240208.jpg')}}" alt="price" />
-          <hr />
-          <h4>Key Features</h4>
-          <p>ELITE Gyms & Classes</p>
-          <p>PRO Gyms</p>
-          <p>Smart workout plan</p>
-          <p>At home workouts</p>
-          <p>Personal Training</p>
-        </div>
-        <button class="btn">Start Your Program</button>
-      </div>
+      @endforeach
     </div>
   </section>
 

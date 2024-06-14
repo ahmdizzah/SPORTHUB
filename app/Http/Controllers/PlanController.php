@@ -162,6 +162,10 @@ class PlanController extends Controller
      */
     public function destroy(Plan $plan)
     {
-        //
+        //tolong buatkan function untuk menghpus semua program yang memiliki plan_id sesuai dengan id plan yang akan dihapus
+        $plan->programs()->delete();
+        $plan->delete();
+
+        return redirect()->route('plans.index')->with('success', 'Plan deleted successfully');
     }
 }
