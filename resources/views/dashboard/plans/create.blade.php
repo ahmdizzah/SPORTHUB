@@ -34,7 +34,7 @@
                <textarea id="description" name="description" class="form-control" rows="3" required>{{ old('description') }}</textarea>
               </div>
               <div class="form-group">
-               <label for="duration" class="form-label">Plan Duration (days)</label>
+               <label for="duration" class="form-label">Plan Duration (months)</label>
                <input type="number" id="duration" name="duration" class="form-control" value="{{ old('duration') }}" required>
               </div>
               <div class="form-group">
